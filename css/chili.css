@@ -4,3 +4,7 @@ body { padding-top: 70px }
 .name{  font-size: x-large}
 .ingredient{font-size: smaller}
 .description{font-size: x-small}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
