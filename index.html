@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!-- JQuery UI -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
     <!-- Custom themes -->
     <link rel="stylesheet" href="css/chili.css">
     <link rel="stylesheet" href="css/isotope.css">
@@ -39,12 +41,13 @@
 </nav>
 
 <div class="container">
-    <div class="button-group sort-by-button-group">
-        <button data-sort-by="name" data-sort-asc="true">ABC⬆︎</button>
-        <button data-sort-by="name" data-sort-asc="false">ABC︎⬇︎</button>
-        <button data-sort-by="heat" data-sort-asc="true">🔥⬆︎</button>
-        <button data-sort-by="heat" data-sort-asc="false">🔥︎⬇︎</button>
+    <div class="btn-group sort-by-button-group">
+        <button data-sort-by="name" data-sort-asc="true" class="btn btn-default">ABC⬆︎</button>
+        <button data-sort-by="name" data-sort-asc="false" class="btn btn-default">ABC︎⬇︎</button>
+        <button data-sort-by="heat" data-sort-asc="true" class="btn btn-default">🔥⬆︎</button>
+        <button data-sort-by="heat" data-sort-asc="false" class="btn btn-default">🔥︎⬇︎</button>
     </div>
+    <div id="heat-slider"></div>
     <div class="grid">
         <div class="product col-lg-4 col-sm-6 col-xs-12 cayenne 100ml">
             <div class="name col-lg-10 col-sm-10 col-xs-10">BBQ</div>
@@ -307,6 +310,8 @@
 
 <!-- jQuery -->
 <script src="scripts/jquery.min.js"></script>
+<!-- JQuery UI -->
+<script src="scripts/jquery-ui.min.js"></script>
 <!-- bootstrap plugin -->
 <script src="scripts/bootstrap.min.js"></script>
 <!-- Isotope -->
