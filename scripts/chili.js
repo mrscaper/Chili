@@ -23,29 +23,42 @@ var $grid = $('.grid').isotope({
     }
 });
 
+
+//Sorting function
 $('.sort-by-button-group').on( 'click', 'button', function() {
     var sortByValue = $(this).attr('data-sort-by');
     var sortByAsc= ($(this).attr('data-sort-asc') == "true");
     $grid.isotope({ sortBy: sortByValue, sortAscending:sortByAsc });
 });
 
+
+//Filtering values
+var $minHeat=1;
+var $maxHeat=5;
+
+
+//Filter update
 function updateFilter()
 {
-    var number = $(this).find('.heat').text();
-    var parsedNumber =parseInt( number, 10 );
-    return (parsedNumber >= ui.values[0]) && (parsedNumber <= ui.values[1]);
+    $grid.isotope({filter: function() {
+        //heat filtering
+        var number = $(this).find('.heat').text();
+        var parsedNumber =parseInt( number, 10 );
+        var rightHothess=(parsedNumber >= $minHeat) && (parsedNumber <= $maxHeat);
+        //Concatenating filters
+        return  rightHothess;
+    }})
 }
 
+//Sauce heat slider
 $( "#heat-slider" ).slider({
     range: true,
     min: 1,
     max: 5,
     values: [ 1, 5 ],
     slide: function( event, ui ) {
-        $grid.isotope({filter: function() {
-            var number = $(this).find('.heat').text();
-            var parsedNumber =parseInt( number, 10 );
-            return (parsedNumber >= ui.values[0]) && (parsedNumber <= ui.values[1]);
-        }})
+        $minHeat=ui.values[0];
+        $maxHeat=ui.values[1];
+        updateFilter();
     }
 });
