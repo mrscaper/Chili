@@ -1,6 +1,9 @@
 body { padding-top: 70px }
 .product {margin-inside: 5px }
-.heat {visibility: hidden}
+.heat {font-size: x-large}
+.heat:before{content:'🔥';
+    position: absolute;
+    z-index: -1}
 .name{  font-size: x-large}
 .ingredient{font-size: smaller}
 .description{font-size: x-small}
