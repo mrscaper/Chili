@@ -32,21 +32,55 @@ $('.sort-by-button-group').on( 'click', 'button', function() {
 });
 
 
-//Filtering values
+//Filtering values for heat
 var $minHeat=1;
 var $maxHeat=5;
 
+//Filtering values for chilies
+var $chiliCheckBoxes={
+    cayenne:false,
+    fresno:false,
+    jamaicanRed:false,
+    jamaicanYellow:false,
+    padron:false,
+    jalapeno:false,
+    habaneroRed:false,
+    habaneroYellow:false,
+    nagaDorset:false,
+    nagaJolokai:false,
+    carolinaReaper:false,
+    trinidadScorpionMoruga:false,
+}
+
+//Checkbox event handler
+function chiliCheckBoxListener (evt) {
+    var id = this.id.substr(15);
+    $chiliCheckBoxes[id] = evt.target.checked;
+    updateFilter();
+}
+
+//Event handler binding
+$('.chili-checkbox').change(chiliCheckBoxListener);
 
 //Filter update
 function updateFilter()
 {
     $grid.isotope({filter: function() {
-        //heat filtering
+        //Heat filtering
         var number = $(this).find('.heat').text();
         var parsedNumber =parseInt( number, 10 );
         var rightHothess=(parsedNumber >= $minHeat) && (parsedNumber <= $maxHeat);
-        //Concatenating filters
-        return  rightHothess;
+        if(!rightHothess)
+            return false;
+        //Chili filtering
+        for(var chili in $chiliCheckBoxes){
+            if($chiliCheckBoxes[chili])
+                if(!$(this).hasClass(chili))
+                    return false;
+        }
+
+        //Passed all filters
+        return  true;
     }})
 }
 
